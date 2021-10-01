@@ -10,7 +10,8 @@ From: conda/miniconda3
     conda config --add channels bioconda
     conda install --yes bwa=0.7.17 \
         samtools=1.11 \
-        pairtools=0.3.0
+        pairtools=0.3.0 \
+        bedtools=2.30.0
     pip install pysam==0.16.0.1 \
         tabulate==0.8.9 \
         numpy==1.21.2 \
@@ -26,12 +27,17 @@ From: conda/miniconda3
     cd HiChiP
     for i in *.sh; do chmod +x $i;done
     for i in *.py; do chmod +x $i;done
+    NOW=`date`
+    REV=`git rev-parse --short HEAD`
 
 %environment
     export PATH="/opt/HiChiP/:$PATH"
 
 
-
+%help
+    https://github.com/remiolsen/dovetail-hichip-singularity (built $NOW)
+    Singularity dependency wrapper and containerization of Dovetail HiChiP tools - https://hichip.readthedocs.io/en/latest/index.html
+    HiChiP-$REV
 
 
 
